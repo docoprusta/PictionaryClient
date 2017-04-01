@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Picitonary"
+             x:Class="Pictionary.LoginPage">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Column="1" Grid.Row="1">
+            <Label FontSize="42" HorizontalTextAlignment="Center">Log in</Label>
+            <Entry x:Name="EmailENT" WidthRequest="300" Placeholder="Email" Keyboard="Email" Text="dsa@dsa.com"></Entry>
+            <Entry x:Name="PasswordENT" WidthRequest="300" Placeholder="Password" IsPassword="True" Text="dsa"></Entry>
+            <Button x:Name="LoginBTN" Clicked="LoginBTN_Clicked" Text="Log in"/>
+            <Button x:Name="SignUpBTN" Clicked="SignUpBTN_Clicked" Text="Sign Up" />
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>

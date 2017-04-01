@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pictionary.Views.EditWordPage">
+
+    <Grid x:Name="MainGRD">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="1*"/>
+            <!--<ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>-->
+        </Grid.ColumnDefinitions>
+
+        <!--<Button x:Name="SaveBTN" Text="Save"  Grid.Row="1" Grid.Column="1" HeightRequest="25" Clicked="SaveBTN_Clicked" />-->
+
+        <StackLayout Grid.Column="1" Grid.Row="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalTextAlignment="Center" Text="Tap to modify, hold to delete"></Label>
+                <Button Grid.Row="1" x:Name="ChangeImageBTN" Text="Change Image" Clicked="ChangeImgBTN_Clicked"/>
+                <!--<Entry x:Name="WordENT" Placeholder="Word"/>-->
+                <Image Grid.Row="2" x:Name="SelectedIMG" Aspect="Fill"/>
+                <Entry Grid.Row="3" x:Name="AddMeaningENT"/>
+
+                <StackLayout Grid.Row="4" Orientation="Horizontal">
+                    <Button HorizontalOptions="FillAndExpand" x:Name="AddMeaningBTN" Text="Add" Clicked="AddMeaningBTN_Clicked"/>
+                    <Button HorizontalOptions="FillAndExpand" x:Name="ModifyMeaningBTN" IsEnabled="False" Text="Modify" Clicked="ModifyMeaningBTN_Clicked"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+
+        <ListView IsPullToRefreshEnabled="True" Grid.Column="1" Grid.Row="2" x:Name="MeaningsLSV" ItemSelected="MeaningsLSV_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="MeaningLBL" Text="{Binding}" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pictionary.UserMainPage">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="10*"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
+
+        <!--TODO floating button-->
+        <StackLayout Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button x:Name="AddNewWordBTN" Text="Add new word" Clicked="AddNewWordBTN_Clicked"/>
+            <Button x:Name="LogoutBTN" Text="Logout" Clicked="LogoutBTN_Clicked"/>
+        </StackLayout>
+
+        <Picker Title="Language1" Grid.Row="1"  x:Name="Language1PCK" SelectedIndexChanged="Language1PCK_SelectedIndexChanged"/>
+        <Picker Title="Language2" Grid.Row="1" Grid.Column="1" x:Name="Language2PCK" SelectedIndexChanged="Language2PCK_SelectedIndexChanged"/>
+
+        <ListView Grid.Row="2" Grid.ColumnSpan="2" x:Name="WordsLSV" RowHeight="100" ItemSelected="WordsLSV_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem x:Name="WordsLSVMIT" Clicked="WordsLSVMIT_Clicked" CommandParameter="{Binding}" Text="Delete" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Image VerticalOptions="Fill" HorizontalOptions="Start" Source="{Binding Picture}"/>
+                            <StackLayout>
+                                <Label Text="{Binding Word}"/>
+                                <Label LineBreakMode="TailTruncation" Text="{Binding MeaningStr}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+  
+</ContentPage>
